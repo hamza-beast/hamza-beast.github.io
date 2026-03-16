@@ -5,9 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Service Pages Navigation
     window.showService = function(pageId) {
-        document.querySelectorAll('.service-page').forEach(page => page.classList.remove('active'));
+        document.querySelectorAll('.service-page').forEach(page => {
+            page.classList.add('hidden');
+            page.classList.remove('active');
+        });
+        
         const selectedPage = document.getElementById(pageId);
         if (selectedPage) {
+            selectedPage.classList.remove('hidden');
             selectedPage.classList.add('active');
             window.scrollTo(0, 0);
             lucide.createIcons();
@@ -15,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.goBack = function() {
-        document.querySelectorAll('.service-page').forEach(page => page.classList.remove('active'));
+        document.querySelectorAll('.service-page').forEach(page => {
+            page.classList.add('hidden');
+            page.classList.remove('active');
+        });
         window.scrollTo(0, 0);
     }
 
@@ -98,18 +106,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 7. Contact Form Handling (Configured for static sites)
-    // To make this work, sign up for formspree.io and replace the action URL in your HTML form
+    // 7. Contact Form Handling (Redirect to WhatsApp)
     const contactForm = document.getElementById('contact-form');
     if(contactForm) {
         contactForm.addEventListener('submit', (e) => {
-            // Uncomment e.preventDefault() if you just want to redirect to WhatsApp instead of Formspree
-            // e.preventDefault();
+            e.preventDefault(); // Stop standard form submission
             
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const goal = document.getElementById('goal').value;
+            const message = document.getElementById('message').value;
+
+            // Format message for WhatsApp
+            const whatsappText = `*New Inquiry via Website*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Goal:* ${goal}\n\n*Message:*\n${message}`;
+            
+            // The phone number
+            const whatsappNumber = '923125956779';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+
+            // Show temporary success message
             const formMessage = document.getElementById('form-message');
-            formMessage.textContent = 'Sending...';
+            formMessage.textContent = 'Redirecting to WhatsApp...';
             formMessage.className = 'text-center py-3 rounded-xl bg-green-500/20 text-green-400 mt-4';
             formMessage.classList.remove('hidden');
+
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            setTimeout(() => {
+                contactForm.reset();
+                formMessage.classList.add('hidden');
+            }, 3000);
         });
     }
 });
