@@ -177,4 +177,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         });
     }
+
+    // 8. Dynamic Currency Switcher
+    // Fixed approximate exchange rates (Base: PKR)
+    const exchangeRates = {
+        PKR: { rate: 1, symbol: '₨' },
+        USD: { rate: 0.0036, symbol: '$' }, // Approx 1 USD = 278 PKR
+        GBP: { rate: 0.0028, symbol: '£' }, // Approx 1 GBP = 353 PKR
+        EUR: { rate: 0.0033, symbol: '€' }  // Approx 1 EUR = 300 PKR
+    };
+
+    function formatPrice(basePrice, currency) {
+        // Calculate and round the price
+        const converted = Math.round(basePrice * exchangeRates[currency].rate);
+        // Add commas and the correct symbol
+        return exchangeRates[currency].symbol + converted.toLocaleString();
+    }
+
+    function updateAllPrices(currency) {
+        // 1. Update all numbers on the page
+        document.querySelectorAll('.price-display').forEach(el => {
+            const basePrice = parseInt(el.getAttribute('data-base'), 10);
+            if (!isNaN(basePrice)) {
+                el.textContent = formatPrice(basePrice, currency);
+            }
+        });
+
+        // 2. Sync both desktop and mobile dropdowns
+        document.querySelectorAll('.currency-switcher').forEach(select => {
+            select.value = currency;
+        });
+
+        // 3. Save to browser storage so it remembers their choice on refresh
+        localStorage.setItem('hamza_preferred_currency', currency);
+    }
+
+    // Initialize currency on load
+    const savedCurrency = localStorage.getItem('hamza_preferred_currency') || 'PKR';
+    updateAllPrices(savedCurrency);
+
+    // Listen for dropdown changes
+    document.querySelectorAll('.currency-switcher').forEach(switcher => {
+        switcher.addEventListener('change', (e) => {
+            updateAllPrices(e.target.value);
+        });
+    });
 });
