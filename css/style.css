@@ -145,3 +145,12 @@ body { box-sizing: border-box; }
 
 .service-page { display: none; }
 .service-page.active { display: block; }
+
+/* Popup Visibility Utilities */
+#promo-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+#promo-overlay.active #promo-container {
+    transform: scale(1);
+}
