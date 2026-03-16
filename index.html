@@ -1,867 +1,307 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full">
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHN Solutions - Digital Marketing Agency | Grow Your Brand</title>
-
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dx3kp9czc/image/upload/v1773608403/MHN_Favicon_xi8pib.png">
+    <meta name="description" content="Hamza Beast Elite Academy offers elite strength coaching, personalized workouts, and custom meal plans to transform your physique.">
+    <meta name="keywords" content="Strength Coaching, Personal Trainer, Arm Wrestling, Muscle Gain, Fat Loss, Coach Hamza">
+    <title>Hamza Beast Elite Academy - Elite Strength Coaching</title>
     
-    <meta name="description" content="MHN Solutions is a modern digital marketing agency helping businesses in Pakistan & Oman grow through strategic marketing, creative design, and high-performance campaigns.">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f0f0f',
+                        secondary: '#1c1c1c',
+                        accent: '#ff3c00',
+                        'accent-light': '#ff5a2e'
+                    }
+                }
+            }
+        }
+    </script>
     
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="h-full overflow-auto text-white bg-[#0A1419] font-montserrat">
-    <div id="app-wrapper" class="min-h-full w-full">
-        
-        <a href="#" onclick="openWhatsApp('Hello MHN Solutions, I want to discuss a project.'); return false;" class="fixed bottom-8 right-8 z-40 group" aria-label="Contact on WhatsApp">
-            <div class="relative">
-                <div class="absolute inset-0 bg-[#25D366] rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300 animate-pulse" style="animation-duration: 2s;"></div>
-                <button class="btn-whatsapp relative inline-flex items-center gap-2 px-6 py-3 shadow-2xl hover:shadow-green-500/50 whitespace-nowrap">
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
-                    <span class="hidden sm:inline">Chat Now</span>
+<body class="h-full bg-primary font-inter text-white overflow-auto">
+
+    <div id="promo-overlay" class="popup-overlay">
+        <div class="popup-container">
+            <div class="popup-badge">🔥 LIMITED TIME OFFER</div>
+            <button class="popup-close" id="popup-close-btn" aria-label="Close Popup">&times;</button>
+            <div class="popup-content">
+                <div class="popup-emoji animate-bounce">🎯</div>
+                <h2 class="popup-heading">GET <span class="discount">50% OFF</span> TODAY</h2>
+                <p class="popup-subheading">For The First 10 Serious Members Only</p>
+                <div class="popup-pricing-section">
+                    <div class="pricing-original">
+                        <span class="original-price">₨29,999</span> 
+                        <span class="strike-through">/month</span>
+                    </div>
+                    <div class="pricing-divider"><span class="divider-text">NOW</span></div>
+                    <div class="pricing-offer">
+                        <span class="offer-price">₨14,999</span>
+                        <p class="save-text">💰 Save ₨15,000 Instantly</p>
+                    </div>
+                </div>
+                <div class="urgency-container">
+                    <div class="scarcity-alert">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i> 
+                        <span>⚠ Only <span class="spots-remaining">10</span> Spots Available</span>
+                    </div>
+                    <div class="urgency-bar"><div class="urgency-fill"></div></div>
+                    <p class="urgency-text">Spots Filling Fast…</p>
+                </div>
+                <p class="popup-description">Full month access to elite coaching, personalized workouts, custom meal plans, and 24/7 WhatsApp support.</p>
+                <div class="social-proof">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> 
+                    <span>Trusted by 500+ transformations</span>
+                </div>
+                <div class="popup-button-group">
+                    <button class="popup-btn-primary animate-pulse-glow" id="popup-claim-btn"> 
+                        <i data-lucide="zap" class="w-5 h-5"></i> CLAIM MY 50% DISCOUNT NOW 
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i> 
+                    </button> 
+                    <button class="popup-btn-secondary" id="popup-decline-btn">No thanks, I'll miss this opportunity</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <div class="flex-shrink-0 flex items-center h-full">
+                    <a href="#home" class="flex-shrink-0 group flex items-center">
+                        <div class="relative w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14 flex items-center justify-center transition-all duration-300">
+                            <img src="https://res.cloudinary.com/dx3kp9czc/image/upload/v1773337485/1_g3srl3.png" alt="Hamza Beast Logo" class="h-full w-auto object-contain transition-all duration-300 group-hover:opacity-0 absolute"> 
+                            <img src="https://res.cloudinary.com/dx3kp9czc/image/upload/v1773337485/2_nutgqb.png" alt="Hamza Beast Logo Hover" class="h-full w-auto object-contain transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:drop-shadow-[0_0_20px_rgba(255,60,0,0.8)] absolute">
+                        </div>
+                    </a>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Home</a> 
+                    <a href="#about" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">About</a> 
+                    <a href="#programs" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Programs</a> 
+                    <a href="#achievements" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Achievements</a> 
+                    <a href="#services-list" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Services</a> 
+                    <a href="#contact" class="ml-4 px-6 py-2.5 bg-accent rounded-full font-bold text-sm uppercase tracking-wide glow-red glow-red-hover transition-all duration-300 hover:bg-accent-light">Join Now</a>
+                </nav>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors" aria-label="Toggle Menu"> 
+                    <i data-lucide="menu" class="w-6 h-6"></i> 
                 </button>
             </div>
-        </a>
+        </div>
+        <nav id="mobile-menu" class="hidden lg:hidden bg-secondary border-t border-white/5">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Home</a> 
+                <a href="#about" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">About</a> 
+                <a href="#programs" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Programs</a> 
+                <a href="#achievements" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Achievements</a> 
+                <a href="#services-list" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Services</a> 
+                <a href="#contact" class="block mt-4 px-6 py-3 bg-accent rounded-full font-bold text-sm uppercase tracking-wide text-center glow-red">Join Now</a>
+            </div>
+        </nav>
+    </header>
 
-        <header>
-            <nav class="navbar fixed top-0 left-0 right-0 z-50">
-                <div class="max-w-7xl mx-auto px-6 py-4">
-                    <div class="flex items-center justify-between">
-                        <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-3 hover:opacity-90 transition-opacity">
-                            <img src="https://res.cloudinary.com/dx3kp9czc/image/upload/v1773335215/Untitled_design_1_uzqgyk.png" alt="MHN Solutions Logo" class="h-10 w-auto">
-                        
-                        </a>
-                        
-                        <div class="hidden md:flex items-center gap-8 font-poppins">
-                            <a href="#" onclick="navigateTo('home'); return false;" class="nav-link active" data-page="home">Home</a>
-                            <a href="#" onclick="navigateTo('about'); return false;" class="nav-link" data-page="about">About</a>
-                            <a href="#" onclick="navigateTo('services'); return false;" class="nav-link" data-page="services">Services</a>
-                            <a href="#" onclick="navigateTo('pricing'); return false;" class="nav-link" data-page="pricing">Pricing</a>
-                            <a href="#" onclick="navigateTo('contact'); return false;" class="nav-link" data-page="contact">Contact</a>
+    <main>
+        <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+            <div class="absolute inset-0 bg-gradient-dark"></div>
+            <div class="absolute top-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+                <div class="grid lg:grid-cols-3 gap-12 lg:gap-16 items-center">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="opacity-0 animate-fade-in-up">
+                            <p class="text-accent font-semibold uppercase tracking-widest text-sm">Elite Strength Academy</p>
                         </div>
-                        
-                        <div class="flex items-center gap-4">
-                            <button onclick="toggleCurrency()" id="currency-btn" class="text-sm font-bold bg-[#0FB9B1]/20 text-[#0FB9B1] px-3 py-1.5 rounded-lg hover:bg-[#0FB9B1]/40 transition-colors">
-                                USD
-                            </button>
-                            
-                            <a href="#" onclick="navigateTo('contact'); return false;" class="hidden md:inline-flex btn-primary items-center justify-center whitespace-nowrap px-6 py-2.5">
-                                Get Started
+                        <h1 class="opacity-0 animate-fade-in-up delay-100">
+                            <span class="block font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-white">WE DON'T JUST TRAIN</span> 
+                            <span class="block font-bebas text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-accent">WE CREATE CHAMPIONS</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-white/70 max-w-xl opacity-0 animate-fade-in-up delay-200 leading-relaxed">Elite strength coaching designed to build power, confidence, and unstoppable physiques.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up delay-300 pt-4">
+                            <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-accent rounded-full font-bold uppercase tracking-wide text-base glow-red glow-red-hover transition-all duration-300 hover:bg-accent-light hover:scale-105 shadow-lg"> 
+                                <i data-lucide="zap" class="w-5 h-5 mr-2"></i> Book Free Call 
+                            </a> 
+                            <a href="#programs" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 rounded-full font-bold uppercase tracking-wide text-base border border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300"> 
+                                <i data-lucide="play" class="w-5 h-5 mr-2"></i> View Programs 
                             </a>
-                            
-                            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-[#0FB9B1]" aria-label="Toggle menu">
-                                <i data-lucide="menu" class="w-6 h-6"></i>
-                            </button>
                         </div>
                     </div>
-                </div>
-            </nav>
-            
-            <div class="mobile-overlay" onclick="toggleMobileMenu()"></div>
-            <div class="mobile-menu">
-                <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 p-2 text-[#0FB9B1]" aria-label="Close menu">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-                <div class="flex flex-col gap-6 font-poppins mt-8">
-                    <a href="#" onclick="navigateTo('home'); toggleMobileMenu(); return false;" class="text-2xl font-semibold hover:text-[#0FB9B1] transition-colors">Home</a>
-                    <a href="#" onclick="navigateTo('about'); toggleMobileMenu(); return false;" class="text-2xl font-semibold hover:text-[#0FB9B1] transition-colors">About</a>
-                    <a href="#" onclick="navigateTo('services'); toggleMobileMenu(); return false;" class="text-2xl font-semibold hover:text-[#0FB9B1] transition-colors">Services</a>
-                    <a href="#" onclick="navigateTo('pricing'); toggleMobileMenu(); return false;" class="text-2xl font-semibold hover:text-[#0FB9B1] transition-colors">Pricing</a>
-                    <a href="#" onclick="navigateTo('contact'); toggleMobileMenu(); return false;" class="text-2xl font-semibold hover:text-[#0FB9B1] transition-colors">Contact</a>
+                    <div class="opacity-0 animate-slide-right delay-400">
+                        <div class="bg-gradient-card rounded-3xl p-8 border border-white/10 shadow-xl">
+                            <div class="space-y-8">
+                                <div class="text-center pb-8 border-b border-white/10">
+                                    <p class="font-bebas text-6xl text-accent">500+</p>
+                                    <p class="text-white/60 uppercase tracking-wide text-sm font-semibold mt-2">Successful Transformations</p>
+                                </div>
+                                <div class="text-center pb-8 border-b border-white/10">
+                                    <p class="font-bebas text-6xl text-accent">5+</p>
+                                    <p class="text-white/60 uppercase tracking-wide text-sm font-semibold mt-2">Years Elite Experience</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-bebas text-6xl text-accent">100%</p>
+                                    <p class="text-white/60 uppercase tracking-wide text-sm font-semibold mt-2">Client Dedication</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </header>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+                <a href="#about" class="text-white/40 hover:text-accent transition-colors" aria-label="Scroll down"> 
+                    <i data-lucide="chevron-down" class="w-8 h-8"></i> 
+                </a>
+            </div>
+        </section>
 
-        <main>
-            <div id="page-home" class="page active">
-                <section class="hero-bg min-h-screen flex items-center relative pt-20 overflow-hidden">
-                    <div class="absolute inset-0 opacity-40">
-                        <div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-[#0FB9B1] to-transparent rounded-full blur-3xl animate-pulse" style="animation: drift 8s ease-in-out infinite;"></div>
-                        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-[#1ED6C7] to-transparent rounded-full blur-3xl animate-pulse" style="animation: drift 10s ease-in-out infinite 2s;"></div>
-                    </div>
-                    <div class="orb orb-1"></div>
-                    <div class="orb orb-2"></div>
-                    <div class="orb orb-3"></div>
-                    
-                    <div class="max-w-7xl mx-auto px-6 py-20 relative z-10 w-full">
-                        <div class="max-w-4xl mx-auto text-center">
-                            <div class="fade-in mb-8">
-                                <span class="inline-block px-4 py-2 sm:px-6 sm:py-3 rounded-full glass-effect hover:glass-glow transition-all duration-300 text-[#0FB9B1] text-xs sm:text-sm font-bold tracking-wider">🚀 Trusted by 100+ Businesses Worldwide</span>
-                            </div>
-                            <h1 class="fade-in font-poppins font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-8 tracking-tight">
-                                Grow Your Brand With <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0FB9B1] via-[#1ED6C7] to-[#00E5D5] block sm:inline">Strategy & Creativity</span>
-                            </h1>
-                            <p class="fade-in text-[#8B95A5] text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12 font-medium">
-                                We help businesses scale with high-performance digital marketing, creative branding, and conversion-focused content that delivers real results.
-                            </p>
-                            <div class="fade-in flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                                <a href="#" onclick="openWhatsApp('Hello MHN Solutions, I want to discuss a project.'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap transform hover:scale-105 transition-all w-full sm:w-auto">
-                                    <i data-lucide="send" class="w-5 h-5"></i> Start Your Project <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                                </a>
-                                <a href="#" onclick="navigateTo('services'); return false;" class="btn-secondary inline-flex items-center justify-center whitespace-nowrap transform hover:scale-105 transition-all w-full sm:w-auto">
-                                    View Services
-                                </a>
-                            </div>
-                            <div class="fade-in flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 pb-16 border-b border-white/10 flex-wrap">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-[#0FB9B1]/20 flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 text-[#0FB9B1]"></i></div>
-                                    <span class="text-sm font-medium">Serving Clients Globally</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-[#0FB9B1]/20 flex items-center justify-center"><i data-lucide="zap" class="w-5 h-5 text-[#0FB9B1]"></i></div>
-                                    <span class="text-sm font-medium">100+ Happy Businesses</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-[#0FB9B1]/20 flex items-center justify-center"><i data-lucide="clock" class="w-5 h-5 text-[#0FB9B1]"></i></div>
-                                    <span class="text-sm font-medium">Fast Response Support</span>
+        <section id="about" class="py-16 lg:py-20 relative bg-secondary border-t border-white/10">
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <div class="relative">
+                            <div class="absolute -inset-6 bg-accent/15 rounded-3xl blur-2xl"></div>
+                            <div class="relative bg-gradient-card rounded-3xl overflow-hidden border border-white/10 aspect-[4/5] flex items-center justify-center shadow-2xl">
+                                <img src="https://res.cloudinary.com/dx3kp9czc/image/upload/v1773298778/IMG-20250601-WA0120_rlgok4.jpg" alt="Coach Hamza" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col items-center justify-end p-6">
+                                    <p class="font-bebas text-3xl sm:text-4xl text-white">COACH HAMZA</p>
+                                    <p class="text-accent uppercase tracking-widest text-sm mt-3 font-semibold">National Champion</p>
                                 </div>
                             </div>
-                            <div class="fade-in grid grid-cols-2 md:grid-cols-4 gap-8">
-                                <div class="text-center">
-                                    <div class="font-poppins font-bold text-3xl md:text-4xl bg-gradient-to-r from-[#0FB9B1] to-[#1ED6C7] bg-clip-text text-transparent mb-2">100+</div>
-                                    <div class="text-[#8B95A5] text-sm font-medium">Happy Clients</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-poppins font-bold text-3xl md:text-4xl bg-gradient-to-r from-[#0FB9B1] to-[#1ED6C7] bg-clip-text text-transparent mb-2">250+</div>
-                                    <div class="text-[#8B95A5] text-sm font-medium">Projects Done</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-poppins font-bold text-3xl md:text-4xl bg-gradient-to-r from-[#0FB9B1] to-[#1ED6C7] bg-clip-text text-transparent mb-2">5+</div>
-                                    <div class="text-[#8B95A5] text-sm font-medium">Years Experience</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-poppins font-bold text-3xl md:text-4xl bg-gradient-to-r from-[#0FB9B1] to-[#1ED6C7] bg-clip-text text-transparent mb-2">∞</div>
-                                    <div class="text-[#8B95A5] text-sm font-medium">Global Reach</div>
-                                </div>
-                            </div>
+                            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-20 blur-xl"></div>
+                            <div class="absolute -top-6 -left-6 w-32 h-32 border-2 border-accent/30 rounded-3xl"></div>
                         </div>
                     </div>
-                </section>
-
-                <section class="py-20 md:py-32">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">What We Do</span>
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl mt-3">Our Services</h2>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">We offer comprehensive digital marketing solutions to help your business thrive in the digital landscape.</p>
+                    <div class="space-y-8 reveal">
+                        <div>
+                            <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Who I Am</p>
+                            <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl text-white">Meet Your Coach</h2>
                         </div>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="service-card fade-in">
-                                <div class="icon-wrap"><i data-lucide="share-2" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                <h3 class="font-poppins font-semibold text-xl mb-3">Social Media Management</h3>
-                                <p class="text-[#A0A0A0] text-sm leading-relaxed">Build a powerful social presence with strategic content and community engagement across all platforms.</p>
-                                <div class="mt-4"><a href="#" onclick="openWhatsApp('Hello MHN Solutions, I am interested in Social Media Management service starting at $80/month. Please share more details.'); return false;" class="btn-secondary text-sm inline-flex items-center justify-center gap-2 w-full whitespace-nowrap"><i data-lucide="send" class="w-4 h-4"></i> Get Service </a></div>
+                        <p class="text-lg text-white/70 leading-relaxed">I'm a professional strength coach and national-level arm wrestling champion dedicated to building elite athletes and powerful physiques through scientific training methods and personalized coaching.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="trophy" class="w-6 h-6 text-accent"></i></div>
+                                <div>
+                                    <p class="font-bold text-white text-lg">National Champion</p>
+                                    <p class="text-white/60">Mr Pakistan 2022 - Arm Wrestling</p>
+                                </div>
                             </div>
-                            <div class="service-card fade-in">
-                                <div class="icon-wrap"><i data-lucide="target" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                <h3 class="font-poppins font-semibold text-xl mb-3">Paid Advertising</h3>
-                                <p class="text-[#A0A0A0] text-sm leading-relaxed">Maximize ROI with data-driven ad campaigns on Google, Facebook, Instagram, and more.</p>
-                                <div class="mt-4"><a href="#" onclick="openWhatsApp('Hello MHN Solutions, I am interested in Paid Advertising service starting at $120/month. Please share more details.'); return false;" class="btn-secondary text-sm inline-flex items-center justify-center gap-2 w-full whitespace-nowrap"><i data-lucide="send" class="w-4 h-4"></i> Get Service </a></div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="award" class="w-6 h-6 text-accent"></i></div>
+                                <div>
+                                    <p class="font-bold text-white text-lg">3x Regional Champion</p>
+                                    <p class="text-white/60">Mr Chakwal - Consecutive Wins</p>
+                                </div>
                             </div>
-                            <div class="service-card fade-in">
-                                <div class="icon-wrap"><i data-lucide="palette" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                <h3 class="font-poppins font-semibold text-xl mb-3">Branding & Creative Design</h3>
-                                <p class="text-[#A0A0A0] text-sm leading-relaxed">Create a memorable brand identity with stunning logos, graphics, and visual assets.</p>
-                                <div class="mt-4"><a href="#" onclick="openWhatsApp('Hello MHN Solutions, I am interested in Branding & Creative Design service ($80-$200 per project). Please share more details.'); return false;" class="btn-secondary text-sm inline-flex items-center justify-center gap-2 w-full whitespace-nowrap"><i data-lucide="send" class="w-4 h-4"></i> Get Service </a></div>
-                            </div>
-                            <div class="service-card fade-in">
-                                <div class="icon-wrap"><i data-lucide="video" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                <h3 class="font-poppins font-semibold text-xl mb-3">Video Editing & Content</h3>
-                                <p class="text-[#A0A0A0] text-sm leading-relaxed">Engage your audience with professional video content that tells your brand story.</p>
-                                <div class="mt-4"><a href="#" onclick="openWhatsApp('Hello MHN Solutions, I am interested in Video Editing & Content service ($50-$120 per project). Please share more details.'); return false;" class="btn-secondary text-sm inline-flex items-center justify-center gap-2 w-full whitespace-nowrap"><i data-lucide="send" class="w-4 h-4"></i> Get Service </a></div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="users" class="w-6 h-6 text-accent"></i></div>
+                                <div>
+                                    <p class="font-bold text-white text-lg">500+ Transformations</p>
+                                    <p class="text-white/60">Proven track record of elite results</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-center mt-12 fade-in">
-                            <a href="#" onclick="navigateTo('services'); return false;" class="btn-secondary inline-flex items-center justify-center whitespace-nowrap">View All Services</a>
-                        </div>
+                        <a href="#contact" class="inline-flex items-center px-8 py-4 bg-accent rounded-full font-bold uppercase tracking-wide text-base glow-red glow-red-hover transition-all duration-300 hover:bg-accent-light hover:scale-105 shadow-lg w-fit"> Start Training <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i> </a>
                     </div>
-                </section>
-                
-                <div class="section-divider"></div>
+                </div>
+            </div>
+        </section>
 
-                <section class="py-20 md:py-32 relative">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">Portfolio</span>
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl mt-3">Recent Work & Projects</h2>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Showcasing our best creative designs and marketing campaigns that delivered results for our clients.</p>
-                        </div>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0FB9B1]/10 to-[#1ED6C7]/5 border border-[#0FB9B1]/20 aspect-square cursor-pointer hover:border-[#0FB9B1]/60 transition-all duration-300 fade-in">
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <div class="w-full h-full flex flex-col items-center justify-center p-6">
-                                    <i data-lucide="instagram" class="w-16 h-16 text-[#0FB9B1] mb-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
-                                    <h3 class="font-poppins font-bold text-lg text-center mb-2">Social Media Campaign</h3>
-                                    <p class="text-[#A0A0A0] text-sm text-center">Instagram creative series</p>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                        <div class="flex items-center gap-2 text-white"><i data-lucide="arrow-right" class="w-5 h-5"></i> <span>View Project</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0FB9B1]/10 to-[#1ED6C7]/5 border border-[#0FB9B1]/20 aspect-square cursor-pointer hover:border-[#0FB9B1]/60 transition-all duration-300 fade-in">
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <div class="w-full h-full flex flex-col items-center justify-center p-6">
-                                    <i data-lucide="palette" class="w-16 h-16 text-[#0FB9B1] mb-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
-                                    <h3 class="font-poppins font-bold text-lg text-center mb-2">Branding Design</h3>
-                                    <p class="text-[#A0A0A0] text-sm text-center">Logo & brand identity</p>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                        <div class="flex items-center gap-2 text-white"><i data-lucide="arrow-right" class="w-5 h-5"></i> <span>View Project</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0FB9B1]/10 to-[#1ED6C7]/5 border border-[#0FB9B1]/20 aspect-square cursor-pointer hover:border-[#0FB9B1]/60 transition-all duration-300 fade-in">
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <div class="w-full h-full flex flex-col items-center justify-center p-6">
-                                    <i data-lucide="video" class="w-16 h-16 text-[#0FB9B1] mb-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
-                                    <h3 class="font-poppins font-bold text-lg text-center mb-2">Video Production</h3>
-                                    <p class="text-[#A0A0A0] text-sm text-center">Professional ad video</p>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                        <div class="flex items-center gap-2 text-white"><i data-lucide="arrow-right" class="w-5 h-5"></i> <span>View Project</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0FB9B1]/10 to-[#1ED6C7]/5 border border-[#0FB9B1]/20 aspect-square cursor-pointer hover:border-[#0FB9B1]/60 transition-all duration-300 fade-in">
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <div class="w-full h-full flex flex-col items-center justify-center p-6">
-                                    <i data-lucide="target" class="w-16 h-16 text-[#0FB9B1] mb-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
-                                    <h3 class="font-poppins font-bold text-lg text-center mb-2">Ad Campaign</h3>
-                                    <p class="text-[#A0A0A0] text-sm text-center">Facebook & Google Ads</p>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                        <div class="flex items-center gap-2 text-white"><i data-lucide="arrow-right" class="w-5 h-5"></i> <span>View Project</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0FB9B1]/10 to-[#1ED6C7]/5 border border-[#0FB9B1]/20 aspect-square cursor-pointer hover:border-[#0FB9B1]/60 transition-all duration-300 fade-in">
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <div class="w-full h-full flex flex-col items-center justify-center p-6">
-                                    <i data-lucide="layout" class="w-16 h-16 text-[#0FB9B1] mb-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
-                                    <h3 class="font-poppins font-bold text-lg text-center mb-2">UI/UX Design</h3>
-                                    <p class="text-[#A0A0A0] text-sm text-center">Landing page design</p>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                        <div class="flex items-center gap-2 text-white"><i data-lucide="arrow-right" class="w-5 h-5"></i> <span>View Project</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0FB9B1]/10 to-[#1ED6C7]/5 border border-[#0FB9B1]/20 aspect-square cursor-pointer hover:border-[#0FB9B1]/60 transition-all duration-300 fade-in">
-                                <div class="absolute inset-0 bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                                <div class="w-full h-full flex flex-col items-center justify-center p-6">
-                                    <i data-lucide="trending-up" class="w-16 h-16 text-[#0FB9B1] mb-4 opacity-60 group-hover:opacity-100 transition-opacity"></i>
-                                    <h3 class="font-poppins font-bold text-lg text-center mb-2">Growth Strategy</h3>
-                                    <p class="text-[#A0A0A0] text-sm text-center">Marketing analytics</p>
-                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                        <div class="flex items-center gap-2 text-white"><i data-lucide="arrow-right" class="w-5 h-5"></i> <span>View Project</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <div class="section-divider"></div>
-
-                <section class="py-20 md:py-32">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="grid lg:grid-cols-2 gap-12 items-center">
-                            <div class="fade-in">
-                                <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">About Us</span>
-                                <h2 class="font-poppins font-bold text-3xl md:text-4xl mt-3 mb-6">Your Growth Partner in Digital Marketing</h2>
-                                <p class="text-[#A0A0A0] mb-6 leading-relaxed">MHN Solutions is a results-driven digital marketing agency serving businesses in Pakistan and Oman. We combine creativity with data-driven strategies to help brands achieve remarkable growth.</p>
-                                <p class="text-[#A0A0A0] mb-8 leading-relaxed">Our team of experts specializes in social media management, paid advertising, branding, and content creation. We don't just deliver services – we deliver results that matter to your business.</p>
-                                <div class="flex flex-wrap gap-6 mb-8">
-                                    <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-[#0FB9B1]"></i> <span class="text-sm">Results-Driven</span></div>
-                                    <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-[#0FB9B1]"></i> <span class="text-sm">Expert Team</span></div>
-                                    <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-5 h-5 text-[#0FB9B1]"></i> <span class="text-sm">24/7 Support</span></div>
-                                </div>
-                                <a href="#" onclick="navigateTo('about'); return false;" class="btn-primary inline-flex items-center justify-center whitespace-nowrap">Learn More About Us</a>
-                            </div>
-                            <div class="fade-in relative">
-                                <div class="aspect-square rounded-2xl bg-gradient-to-br from-[#0FB9B1]/20 to-[#1ED6C7]/5 p-8 flex items-center justify-center">
-                                    <div class="grid grid-cols-2 gap-4 w-full max-w-sm">
-                                        <div class="bg-[#0B1F24] rounded-xl p-6 text-center border border-[#0FB9B1]/20">
-                                            <i data-lucide="trending-up" class="w-8 h-8 text-[#0FB9B1] mx-auto mb-3"></i>
-                                            <div class="font-poppins font-bold text-2xl text-[#0FB9B1]">300%</div>
-                                            <div class="text-xs text-[#A0A0A0] mt-1">Avg ROI Increase</div>
-                                        </div>
-                                        <div class="bg-[#0B1F24] rounded-xl p-6 text-center border border-[#0FB9B1]/20">
-                                            <i data-lucide="users" class="w-8 h-8 text-[#0FB9B1] mx-auto mb-3"></i>
-                                            <div class="font-poppins font-bold text-2xl text-[#0FB9B1]">10M+</div>
-                                            <div class="text-xs text-[#A0A0A0] mt-1">Reach Generated</div>
-                                        </div>
-                                        <div class="bg-[#0B1F24] rounded-xl p-6 text-center border border-[#0FB9B1]/20">
-                                            <i data-lucide="star" class="w-8 h-8 text-[#0FB9B1] mx-auto mb-3"></i>
-                                            <div class="font-poppins font-bold text-2xl text-[#0FB9B1]">4.9</div>
-                                            <div class="text-xs text-[#A0A0A0] mt-1">Client Rating</div>
-                                        </div>
-                                        <div class="bg-[#0B1F24] rounded-xl p-6 text-center border border-[#0FB9B1]/20">
-                                            <i data-lucide="award" class="w-8 h-8 text-[#0FB9B1] mx-auto mb-3"></i>
-                                            <div class="font-poppins font-bold text-2xl text-[#0FB9B1]">15+</div>
-                                            <div class="text-xs text-[#A0A0A0] mt-1">Awards Won</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <div class="section-divider"></div>
-
-                <section class="py-20 md:py-32">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">Pricing</span>
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl mt-3">Simple, Transparent Pricing</h2>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Choose the perfect plan for your business needs. All plans include dedicated support.</p>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                            <div class="pricing-card fade-in flex flex-col">
-                                <h3 class="font-poppins font-semibold text-xl mb-2">Starter</h3>
-                                <p class="text-[#A0A0A0] text-sm mb-6">Perfect for small businesses</p>
-                                <div class="mb-6 text-4xl font-poppins font-bold text-white">
-                                    <span class="currency-symbol">$</span><span class="price-val" data-usd="80" data-pkr="22400">80</span>
-                                    <span class="text-[#A0A0A0] text-lg font-normal">-$120/mo</span>
-                                </div>
-                                <ul class="space-y-3 mb-8 flex-1">
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Basic marketing support</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> 5 social media posts</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Basic editing</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Email support</li>
-                                </ul>
-                                <a href="#" onclick="openWhatsApp('Starter Plan - $80-$120/month'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto">
-                                    <i data-lucide="send" class="w-5 h-5"></i> Get Started
-                                </a>
-                            </div>
-                            <div class="pricing-card popular fade-in flex flex-col">
-                                <div class="popular-badge">Most Popular</div>
-                                <h3 class="font-poppins font-semibold text-xl mb-2">Growth</h3>
-                                <p class="text-[#A0A0A0] text-sm mb-6">For growing businesses</p>
-                                <div class="mb-6 text-4xl font-poppins font-bold text-white">
-                                    <span class="currency-symbol">$</span><span class="price-val" data-usd="150" data-pkr="42000">150</span>
-                                    <span class="text-[#A0A0A0] text-lg font-normal">-$220/mo</span>
-                                </div>
-                                <ul class="space-y-3 mb-8 flex-1">
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Social media management</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> 10 posts per month</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Ad campaign setup</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Video editing support</li>
-                                </ul>
-                                <a href="#" onclick="openWhatsApp('Growth Plan - $150-$220/month'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto">
-                                    <i data-lucide="send" class="w-5 h-5"></i> Get Started
-                                </a>
-                            </div>
-                            <div class="pricing-card fade-in flex flex-col">
-                                <h3 class="font-poppins font-semibold text-xl mb-2">Premium</h3>
-                                <p class="text-[#A0A0A0] text-sm mb-6">For established businesses</p>
-                                <div class="mb-6 text-4xl font-poppins font-bold text-white">
-                                    <span class="currency-symbol">$</span><span class="price-val" data-usd="350" data-pkr="98000">350</span>
-                                    <span class="text-[#A0A0A0] text-lg font-normal">+/mo</span>
-                                </div>
-                                <ul class="space-y-3 mb-8 flex-1">
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Full marketing strategy</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Unlimited creative support</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Ads management</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Priority support</li>
-                                </ul>
-                                <a href="#" onclick="openWhatsApp('Premium Plan - $350+/month'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto">
-                                    <i data-lucide="send" class="w-5 h-5"></i> Get Started
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="section-divider"></div>
-
-                <section class="py-20 md:py-32">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">Testimonials</span>
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl mt-3">What Our Clients Say</h2>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Don't just take our word for it – hear from some of our satisfied clients.</p>
-                        </div>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="testimonial-card fade-in">
-                                <div class="flex gap-1 mb-4">
-                                    <i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i>
-                                </div>
-                                <p class="text-[#A0A0A0] mb-6 leading-relaxed">"MHN Solutions transformed our social media presence completely. Our engagement increased by 400% in just 3 months. Highly recommended!"</p>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] flex items-center justify-center font-poppins font-bold text-[#0B1F24]">AK</div>
-                                    <div>
-                                        <div class="font-semibold">Ahmed Khan</div><div class="text-[#A0A0A0] text-sm">CEO, TechStart Pakistan</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card fade-in">
-                                <div class="flex gap-1 mb-4">
-                                    <i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i>
-                                </div>
-                                <p class="text-[#A0A0A0] mb-6 leading-relaxed">"The team at MHN is incredibly professional and creative. They helped us launch our brand in Oman with amazing results. Our sales doubled!"</p>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] flex items-center justify-center font-poppins font-bold text-[#0B1F24]">SM</div>
-                                    <div>
-                                        <div class="font-semibold">Sara Mohammed</div><div class="text-[#A0A0A0] text-sm">Founder, Oman Boutique</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card fade-in">
-                                <div class="flex gap-1 mb-4">
-                                    <i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i><i data-lucide="star" class="w-5 h-5 text-[#FFD700] fill-current"></i>
-                                </div>
-                                <p class="text-[#A0A0A0] mb-6 leading-relaxed">"Best investment we made for our business. The paid advertising campaigns delivered 10x ROI. The team truly understands the local market."</p>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#0FB9B1] to-[#1ED6C7] flex items-center justify-center font-poppins font-bold text-[#0B1F24]">RH</div>
-                                    <div>
-                                        <div class="font-semibold">Rashid Hassan</div><div class="text-[#A0A0A0] text-sm">Director, Gulf Trading Co.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="section-divider"></div>
-
-                <section class="py-20 md:py-32 relative">
-                    <div class="max-w-4xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">FAQ</span>
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl mt-3">Frequently Asked Questions</h2>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Find answers to common questions about our services and how we work.</p>
+        <section id="contact" class="py-16 lg:py-20 relative bg-secondary border-t border-white/10">
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 reveal">
+                    <p class="text-accent font-semibold uppercase tracking-widest text-sm mb-3">Get Started</p>
+                    <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl text-white">Start Your Transformation Today</h2>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="space-y-8 reveal">
+                        <div>
+                            <h3 class="font-bebas text-3xl text-white mb-4">Ready to Begin?</h3>
+                            <p class="text-white/70 text-lg">Take the first step towards your fitness goals. Contact me directly for a free consultation.</p>
                         </div>
                         <div class="space-y-4">
-                            <div class="service-card fade-in cursor-pointer group" onclick="toggleFAQ(this)">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="font-poppins font-semibold text-lg">How long does it take to start a marketing campaign?</h3>
-                                    <i data-lucide="chevron-down" class="w-6 h-6 text-[#0FB9B1] transition-transform duration-300 group-hover:rotate-180"></i>
+                            <a id="whatsapp-link" href="https://wa.me/923125956779" target="_blank" class="flex items-center p-5 bg-gradient-card rounded-2xl border border-white/10 hover:border-accent hover:bg-accent/10 transition-all duration-300 group shadow-lg">
+                                <div class="w-14 h-14 bg-green-500/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-green-500/30 transition-colors">
+                                    <i data-lucide="message-circle" class="w-6 h-6 text-green-500"></i>
                                 </div>
-                                <p class="text-[#A0A0A0] mt-4 max-h-0 overflow-hidden transition-all duration-300">We can start your marketing campaign within 2-3 days of signing an agreement. Our team will conduct an initial consultation, understand your goals, and create a customized strategy tailored to your business needs.</p>
-                            </div>
-                            <div class="service-card fade-in cursor-pointer group" onclick="toggleFAQ(this)">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="font-poppins font-semibold text-lg">Do you work with international clients?</h3>
-                                    <i data-lucide="chevron-down" class="w-6 h-6 text-[#0FB9B1] transition-transform duration-300 group-hover:rotate-180"></i>
+                                <div>
+                                    <p class="text-white/60 text-sm font-semibold">WhatsApp</p>
+                                    <p class="text-white font-bold">+923125956779</p>
                                 </div>
-                                <p class="text-[#A0A0A0] mt-4 max-h-0 overflow-hidden transition-all duration-300">Yes! We serve clients worldwide. While we're based in Pakistan and Oman, we work with businesses globally. Our team is experienced in different markets, cultures, and digital landscapes across multiple regions.</p>
-                            </div>
-                            <div class="service-card fade-in cursor-pointer group" onclick="toggleFAQ(this)">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="font-poppins font-semibold text-lg">What industries do you work with?</h3>
-                                    <i data-lucide="chevron-down" class="w-6 h-6 text-[#0FB9B1] transition-transform duration-300 group-hover:rotate-180"></i>
+                                <i data-lucide="external-link" class="w-5 h-5 text-white/40 ml-auto group-hover:text-accent transition-colors"></i> 
+                            </a> 
+                            <a href="mailto:malikhamza143110@gmail.com" class="flex items-center p-5 bg-gradient-card rounded-2xl border border-white/10 hover:border-accent hover:bg-accent/10 transition-all duration-300 group shadow-lg">
+                                <div class="w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-accent/30 transition-colors">
+                                    <i data-lucide="mail" class="w-6 h-6 text-accent"></i>
                                 </div>
-                                <p class="text-[#A0A0A0] mt-4 max-h-0 overflow-hidden transition-all duration-300">We work with diverse industries including e-commerce, SaaS, real estate, healthcare, education, fintech, retail, hospitality, and more. Our flexible approach allows us to serve any industry effectively.</p>
-                            </div>
-                            <div class="service-card fade-in cursor-pointer group" onclick="toggleFAQ(this)">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="font-poppins font-semibold text-lg">How do payments work?</h3>
-                                    <i data-lucide="chevron-down" class="w-6 h-6 text-[#0FB9B1] transition-transform duration-300 group-hover:rotate-180"></i>
+                                <div>
+                                    <p class="text-white/60 text-sm font-semibold">Email</p>
+                                    <p class="text-white font-bold">malikhamza143110@gmail.com</p>
                                 </div>
-                                <p class="text-[#A0A0A0] mt-4 max-h-0 overflow-hidden transition-all duration-300">We offer flexible payment options including monthly subscriptions, project-based pricing, and custom packages. Payments can be made via bank transfer, online payment gateways, or other methods. We'll discuss the best option for your business during our consultation.</p>
-                            </div>
-                            <div class="service-card fade-in cursor-pointer group" onclick="toggleFAQ(this)">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="font-poppins font-semibold text-lg">Can you guarantee results?</h3>
-                                    <i data-lucide="chevron-down" class="w-6 h-6 text-[#0FB9B1] transition-transform duration-300 group-hover:rotate-180"></i>
-                                </div>
-                                <p class="text-[#A0A0A0] mt-4 max-h-0 overflow-hidden transition-all duration-300">While we can't guarantee specific results due to market variables, we focus on data-driven strategies designed to maximize ROI. Our track record shows a 300% average ROI increase for clients. We use transparent reporting and regular updates to track progress.</p>
-                            </div>
-                            <div class="service-card fade-in cursor-pointer group" onclick="toggleFAQ(this)">
-                                <div class="flex items-center justify-between">
-                                    <h3 class="font-poppins font-semibold text-lg">Do you provide reporting and analytics?</h3>
-                                    <i data-lucide="chevron-down" class="w-6 h-6 text-[#0FB9B1] transition-transform duration-300 group-hover:rotate-180"></i>
-                                </div>
-                                <p class="text-[#A0A0A0] mt-4 max-h-0 overflow-hidden transition-all duration-300">Absolutely! We provide comprehensive monthly reports with detailed analytics, performance metrics, and insights. You'll have access to dashboards showing campaign performance, engagement metrics, conversions, and recommendations for optimization.</p>
-                            </div>
+                                <i data-lucide="external-link" class="w-5 h-5 text-white/40 ml-auto group-hover:text-accent transition-colors"></i> 
+                            </a>
                         </div>
                     </div>
-                </section>
-                
-                <section class="py-20 md:py-32 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0FB9B1]/5 to-transparent"></div>
-                    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                        <div class="fade-in">
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl lg:text-5xl mb-6">Ready to Grow Your Business?</h2>
-                            <p class="text-[#A0A0A0] text-lg mb-10 max-w-2xl mx-auto">Let's discuss how we can help you achieve your marketing goals. Get in touch with our team today.</p>
-                            <a href="#" onclick="navigateTo('contact'); return false;" class="btn-primary inline-flex items-center justify-center whitespace-nowrap text-lg px-10 py-4">Contact Us Now</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="page-about" class="page page-bg">
-                <section class="pt-32 pb-20">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-20 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">About Us</span>
-                            <h1 class="font-poppins font-bold text-4xl md:text-5xl mt-3 mb-6">Who We Are</h1>
-                            <p class="text-[#A0A0A0] max-w-3xl mx-auto text-lg leading-relaxed">MHN Solutions is a modern digital marketing agency helping businesses grow through strategic marketing, creative branding, and high-performance digital content. We work with startups and growing brands to improve their online visibility, engagement, and conversions.</p>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-12 mb-20 fade-in">
-                            <div class="service-card">
-                                <div class="icon-wrap mb-6"><i data-lucide="target" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                <h3 class="font-poppins font-bold text-2xl mb-4">Our Mission</h3>
-                                <p class="text-[#A0A0A0] leading-relaxed">Our mission is to help businesses scale with smart digital marketing strategies, creative design, and results-driven campaigns that deliver measurable growth and lasting impact.</p>
+                    <div class="reveal delay-100">
+                        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-gradient-card rounded-3xl p-8 lg:p-10 border border-white/10 space-y-6 shadow-xl">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-white/80 mb-2">Your Name</label> 
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-primary rounded-xl border border-white/10 text-white placeholder-white/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors" placeholder="Enter your name">
                             </div>
-                            <div class="service-card">
-                                <div class="icon-wrap mb-6"><i data-lucide="compass" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                <h3 class="font-poppins font-bold text-2xl mb-4">Our Vision</h3>
-                                <p class="text-[#A0A0A0] leading-relaxed">Our vision is to become a trusted global marketing partner for startups and businesses looking to grow in the digital world, known for innovation and exceptional results.</p>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-white/80 mb-2">Email Address</label> 
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-primary rounded-xl border border-white/10 text-white placeholder-white/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors" placeholder="your@email.com">
                             </div>
-                        </div>
-                        <div class="mb-20 fade-in">
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center mb-16">Why Choose Us</h2>
-                            <div class="grid md:grid-cols-3 gap-8">
-                                <div class="service-card">
-                                    <div class="icon-wrap mb-6"><i data-lucide="chart-line" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <h3 class="font-poppins font-semibold text-xl mb-3">Strategic Marketing Approach</h3>
-                                    <p class="text-[#A0A0A0] text-sm leading-relaxed">We create data-driven marketing strategies that focus on real growth, understanding your business goals and delivering tailored solutions for success.</p>
-                                </div>
-                                <div class="service-card">
-                                    <div class="icon-wrap mb-6"><i data-lucide="palette" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <h3 class="font-poppins font-semibold text-xl mb-3">Creative Design & Content</h3>
-                                    <p class="text-[#A0A0A0] text-sm leading-relaxed">We design modern branding and engaging content that captures attention, resonates with your audience, and stands out in a competitive market.</p>
-                                </div>
-                                <div class="service-card">
-                                    <div class="icon-wrap mb-6"><i data-lucide="trending-up" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <h3 class="font-poppins font-semibold text-xl mb-3">Results-Driven Campaigns</h3>
-                                    <p class="text-[#A0A0A0] text-sm leading-relaxed">We focus on performance, conversions, and measurable results, ensuring every campaign delivers ROI and contributes to your business objectives.</p>
-                                </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-semibold text-white/80 mb-2">Phone Number</label> 
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-primary rounded-xl border border-white/10 text-white placeholder-white/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors" placeholder="+92 XXX XXXXXXX">
                             </div>
-                        </div>
-                        <div class="service-card bg-gradient-to-r from-[#0FB9B1]/10 to-[#1ED6C7]/10 border border-[#0FB9B1]/30 fade-in text-center py-8">
-                            <h3 class="font-poppins font-bold text-2xl md:text-3xl mb-4">Ready to Grow Your Business?</h3>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mb-8">Let's work together to take your business to the next level with our proven digital marketing strategies.</p>
-                            <a href="#" onclick="navigateTo('contact'); return false;" class="btn-primary inline-flex items-center justify-center whitespace-nowrap mt-4">Contact Us</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="page-services" class="page page-bg">
-                <section class="pt-32 pb-20">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">Our Services</span>
-                            <h1 class="font-poppins font-bold text-4xl md:text-5xl mt-3">What We Offer</h1>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Comprehensive digital marketing solutions tailored for businesses in Pakistan and Oman.</p>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-8 mb-20">
-                            <div class="service-card fade-in">
-                                <div class="flex items-start gap-5">
-                                    <div class="icon-wrap flex-shrink-0"><i data-lucide="share-2" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <div class="w-full">
-                                        <h3 class="font-poppins font-semibold text-xl mb-3">Social Media Management</h3>
-                                        <p class="text-[#A0A0A0] mb-4 leading-relaxed">Build a powerful social presence that engages your audience and drives growth across all major platforms.</p>
-                                        <ul class="space-y-2 mb-6">
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Content planning</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Post design</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Page management</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Engagement growth</li>
-                                        </ul>
-                                        <a href="#" onclick="openWhatsApp('Interested in Social Media Management'); return false;" class="btn-secondary w-full inline-flex items-center justify-center whitespace-nowrap text-sm">Get Started</a>
-                                    </div>
-                                </div>
+                            <div>
+                                <label for="goal" class="block text-sm font-semibold text-white/80 mb-2">Your Goal</label> 
+                                <select id="goal" name="goal" required class="w-full px-4 py-3 bg-primary rounded-xl border border-white/10 text-white focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"> 
+                                    <option value="" class="bg-primary">Select your goal</option> 
+                                    <option value="fat-loss" class="bg-primary">Fat Loss</option> 
+                                    <option value="muscle-gain" class="bg-primary">Muscle Gain</option> 
+                                    <option value="strength" class="bg-primary">Strength Training</option> 
+                                    <option value="arm-wrestling" class="bg-primary">Arm Wrestling</option> 
+                                </select>
                             </div>
-                            <div class="service-card fade-in">
-                                <div class="flex items-start gap-5">
-                                    <div class="icon-wrap flex-shrink-0"><i data-lucide="target" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <div class="w-full">
-                                        <h3 class="font-poppins font-semibold text-xl mb-3">Paid Advertising</h3>
-                                        <p class="text-[#A0A0A0] mb-4 leading-relaxed">Maximize your ROI with data-driven advertising campaigns across Google, Meta, and more.</p>
-                                        <ul class="space-y-2 mb-6">
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Facebook & Instagram ads</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Google Ads campaigns</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Conversion tracking</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Campaign optimization</li>
-                                        </ul>
-                                        <a href="#" onclick="openWhatsApp('Interested in Paid Advertising'); return false;" class="btn-secondary w-full inline-flex items-center justify-center whitespace-nowrap text-sm">Get Started</a>
-                                    </div>
-                                </div>
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-white/80 mb-2">Your Message</label> 
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 bg-primary rounded-xl border border-white/10 text-white placeholder-white/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors resize-none" placeholder="Tell me about your fitness goals..."></textarea>
                             </div>
-                            <div class="service-card fade-in">
-                                <div class="flex items-start gap-5">
-                                    <div class="icon-wrap flex-shrink-0"><i data-lucide="palette" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <div class="w-full">
-                                        <h3 class="font-poppins font-semibold text-xl mb-3">Branding & Creative Design</h3>
-                                        <p class="text-[#A0A0A0] mb-4 leading-relaxed">Create a memorable brand identity that stands out and resonates with your target audience.</p>
-                                        <ul class="space-y-2 mb-6">
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Logo design</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Brand identity</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Social media creatives</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Marketing graphics</li>
-                                        </ul>
-                                        <a href="#" onclick="openWhatsApp('Interested in Branding'); return false;" class="btn-secondary w-full inline-flex items-center justify-center whitespace-nowrap text-sm">Get Started</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="service-card fade-in">
-                                <div class="flex items-start gap-5">
-                                    <div class="icon-wrap flex-shrink-0"><i data-lucide="video" class="w-7 h-7 text-[#0FB9B1]"></i></div>
-                                    <div class="w-full">
-                                        <h3 class="font-poppins font-semibold text-xl mb-3">Video Editing & Content Creation</h3>
-                                        <p class="text-[#A0A0A0] mb-4 leading-relaxed">Engage your audience with professional video content that tells your brand story effectively.</p>
-                                        <ul class="space-y-2 mb-6">
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Short-form video editing</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Promotional ads</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Social media reels</li>
-                                            <li class="flex items-center gap-2 text-sm text-[#A0A0A0]"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Brand video content</li>
-                                        </ul>
-                                        <a href="#" onclick="openWhatsApp('Interested in Video Editing'); return false;" class="btn-secondary w-full inline-flex items-center justify-center whitespace-nowrap text-sm">Get Started</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-20 fade-in">
-                            <h2 class="font-poppins font-bold text-3xl md:text-4xl text-center mb-16">Service Pricing</h2>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                <div class="pricing-card text-center !p-6 flex flex-col justify-between h-full">
-                                    <div>
-                                        <h4 class="font-poppins font-semibold text-lg mb-2">Social Media</h4>
-                                        <p class="text-[#0FB9B1] font-bold text-3xl mb-1"><span class="currency-symbol">$</span><span class="price-val" data-usd="80" data-pkr="22400">80</span></p>
-                                        <p class="text-[#A0A0A0] text-sm mb-6">/month</p>
-                                    </div>
-                                    <a href="#" onclick="openWhatsApp('I want Social Media Management'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto"><i data-lucide="send" class="w-4 h-4"></i> Get Service</a>
-                                </div>
-                                <div class="pricing-card text-center !p-6 flex flex-col justify-between h-full">
-                                    <div>
-                                        <h4 class="font-poppins font-semibold text-lg mb-2">Video Editing Package</h4>
-                                        <p class="text-[#0FB9B1] font-bold text-3xl mb-1"><span class="currency-symbol">$</span><span class="price-val" data-usd="50" data-pkr="14000">50</span>-$120</p>
-                                        <p class="text-[#A0A0A0] text-sm mb-6">per project</p>
-                                    </div>
-                                    <a href="#" onclick="openWhatsApp('I want Video Editing'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto"><i data-lucide="send" class="w-4 h-4"></i> Get Service</a>
-                                </div>
-                                <div class="pricing-card text-center !p-6 flex flex-col justify-between h-full">
-                                    <div>
-                                        <h4 class="font-poppins font-semibold text-lg mb-2">Branding Package</h4>
-                                        <p class="text-[#0FB9B1] font-bold text-3xl mb-1"><span class="currency-symbol">$</span><span class="price-val" data-usd="80" data-pkr="22400">80</span>-$200</p>
-                                        <p class="text-[#A0A0A0] text-sm mb-6">per project</p>
-                                    </div>
-                                    <a href="#" onclick="openWhatsApp('I want Branding'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto"><i data-lucide="send" class="w-4 h-4"></i> Get Service</a>
-                                </div>
-                                <div class="pricing-card text-center !p-6 flex flex-col justify-between h-full">
-                                    <div>
-                                        <h4 class="font-poppins font-semibold text-lg mb-2">Paid Ads Management</h4>
-                                        <p class="text-[#0FB9B1] font-bold text-3xl mb-1">From <span class="currency-symbol">$</span><span class="price-val" data-usd="120" data-pkr="33600">120</span></p>
-                                        <p class="text-[#A0A0A0] text-sm mb-6">/month</p>
-                                    </div>
-                                    <a href="#" onclick="openWhatsApp('I want Paid Ads'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto"><i data-lucide="send" class="w-4 h-4"></i> Get Service</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="page-pricing" class="page page-bg">
-                <section class="pt-32 pb-20">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">Pricing</span>
-                            <h1 class="font-poppins font-bold text-4xl md:text-5xl mt-3">Choose Your Plan</h1>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Flexible pricing options designed to fit businesses of all sizes. Perfect for startups and growing companies.</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
-                            <div class="pricing-card fade-in flex flex-col h-full">
-                                <h3 class="font-poppins font-semibold text-xl mb-2">Starter</h3>
-                                <p class="text-[#A0A0A0] text-sm mb-6">Perfect for small businesses just getting started</p>
-                                <div class="mb-6 text-4xl font-poppins font-bold text-white">
-                                    <span class="currency-symbol">$</span><span class="price-val" data-usd="80" data-pkr="22400">80</span>
-                                    <span class="text-[#A0A0A0] text-lg font-normal">-$120/mo</span>
-                                </div>
-                                <ul class="space-y-3 mb-8 flex-1">
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Basic marketing support</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> 5 social media posts</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Basic editing</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Email support</li>
-                                </ul>
-                                <a href="#" onclick="openWhatsApp('Hello MHN Solutions, I am interested in the Starter Plan ($80-$120/month). Please share more details.'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto">
-                                    <i data-lucide="send" class="w-5 h-5"></i> Start on WhatsApp
-                                </a>
-                            </div>
-                            
-                            <div class="pricing-card popular fade-in flex flex-col h-full">
-                                <div class="popular-badge">Most Popular</div>
-                                <h3 class="font-poppins font-semibold text-xl mb-2">Growth</h3>
-                                <p class="text-[#A0A0A0] text-sm mb-6">For growing businesses ready to scale</p>
-                                <div class="mb-6 text-4xl font-poppins font-bold text-white">
-                                    <span class="currency-symbol">$</span><span class="price-val" data-usd="150" data-pkr="42000">150</span>
-                                    <span class="text-[#A0A0A0] text-lg font-normal">-$220/mo</span>
-                                </div>
-                                <ul class="space-y-3 mb-8 flex-1">
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Social media management</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> 10 posts per month</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Ad campaign setup</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Video editing support</li>
-                                </ul>
-                                <a href="#" onclick="openWhatsApp('Hello MHN Solutions, I am interested in the Growth Plan ($150-$220/month). Please share more details.'); return false;" class="btn-primary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto">
-                                    <i data-lucide="send" class="w-5 h-5"></i> Start on WhatsApp
-                                </a>
-                            </div>
-
-                            <div class="pricing-card fade-in flex flex-col h-full">
-                                <h3 class="font-poppins font-semibold text-xl mb-2">Premium</h3>
-                                <p class="text-[#A0A0A0] text-sm mb-6">For established businesses wanting full service</p>
-                                <div class="mb-6 text-4xl font-poppins font-bold text-white">
-                                    <span class="currency-symbol">$</span><span class="price-val" data-usd="350" data-pkr="98000">350</span>
-                                    <span class="text-[#A0A0A0] text-lg font-normal">+/mo</span>
-                                </div>
-                                <ul class="space-y-3 mb-8 flex-1">
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Full marketing strategy</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Unlimited creative support</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Ads management</li>
-                                    <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-[#0FB9B1]"></i> Priority support</li>
-                                </ul>
-                                <a href="#" onclick="openWhatsApp('Premium Plan - $350+/month'); return false;" class="btn-secondary inline-flex items-center justify-center gap-2 w-full whitespace-nowrap mt-auto">
-                                    Start Project
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="page-contact" class="page page-bg">
-                <section class="pt-32 pb-20">
-                    <div class="max-w-7xl mx-auto px-6">
-                        <div class="text-center mb-16 fade-in">
-                            <span class="text-[#0FB9B1] font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-                            <h1 class="font-poppins font-bold text-4xl md:text-5xl mt-3">Let's Talk</h1>
-                            <p class="text-[#A0A0A0] max-w-2xl mx-auto mt-4">Ready to grow your business? Get in touch and let's discuss how we can help.</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                            <div class="fade-in">
-                                <div class="service-card">
-                                    <h3 class="font-poppins font-semibold text-xl mb-6">Send Us a Message</h3>
-                                    <form onsubmit="submitFormToWhatsApp(event)" id="contact-form">
-                                        <div class="mb-4">
-                                            <label for="contact-name" class="block text-sm mb-2">Name</label>
-                                            <input type="text" id="contact-name" class="form-input" placeholder="Your name" required>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="contact-email" class="block text-sm mb-2">Email</label>
-                                            <input type="email" id="contact-email" class="form-input" placeholder="your@email.com" required>
-                                        </div>
-                                        <div class="mb-4">
-                                            <label for="contact-service" class="block text-sm mb-2">Service Required</label>
-                                            <select id="contact-service" class="form-input text-white bg-[#111F28] cursor-pointer">
-                                                <option value="General Inquiry">General Inquiry</option>
-                                                <option value="Social Media Management">Social Media Management</option>
-                                                <option value="Paid Advertising">Paid Advertising</option>
-                                                <option value="Branding & Design">Branding & Design</option>
-                                                <option value="Video Editing">Video Editing</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-6">
-                                            <label for="contact-message" class="block text-sm mb-2">Message</label>
-                                            <textarea id="contact-message" rows="4" class="form-input" placeholder="Tell us about your project..." required></textarea>
-                                        </div>
-                                        <button type="submit" class="btn-primary w-full inline-flex justify-center items-center gap-2 whitespace-nowrap">
-                                            <i data-lucide="send" class="w-5 h-5"></i> Send via WhatsApp
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="fade-in space-y-6">
-                                <div class="service-card flex items-center gap-4">
-                                    <div class="p-3 rounded-full bg-[#0FB9B1]/20"><i data-lucide="phone" class="w-6 h-6 text-[#0FB9B1]"></i></div>
-                                    <div>
-                                        <h4 class="font-poppins font-semibold">Phone</h4>
-                                        <a href="tel:+923356900672" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors">+92 335 6900672</a>
-                                    </div>
-                                </div>
-                                <div class="service-card flex items-center gap-4">
-                                    <div class="p-3 rounded-full bg-[#0FB9B1]/20"><i data-lucide="mail" class="w-6 h-6 text-[#0FB9B1]"></i></div>
-                                    <div>
-                                        <h4 class="font-poppins font-semibold">Email</h4>
-                                        <a href="mailto:contact.mhnsolutions@gmail.com" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors">contact.mhnsolutions@gmail.com</a>
-                                    </div>
-                                </div>
-                                <div class="service-card flex items-center gap-4">
-                                    <div class="p-3 rounded-full bg-[#0FB9B1]/20"><i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i></div>
-                                    <div>
-                                        <h4 class="font-poppins font-semibold">WhatsApp</h4>
-                                        <a href="#" onclick="openWhatsApp('Hello MHN Solutions, I want to discuss a project.'); return false;" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors">Chat with us directly</a>
-                                    </div>
-                                </div>
-                                <div class="service-card flex items-center gap-4">
-                                    <div class="p-3 rounded-full bg-[#0FB9B1]/20"><i data-lucide="map-pin" class="w-6 h-6 text-[#0FB9B1]"></i></div>
-                                    <div>
-                                        <h4 class="font-poppins font-semibold">Locations</h4>
-                                        <p class="text-[#A0A0A0]">Pakistan & Oman <br><span class="text-[#0FB9B1] text-xs">🌍 Serving Clients Globally</span></p>
-                                    </div>
-                                </div>
-                                <div class="service-card flex items-center gap-4">
-                                    <div class="p-3 rounded-full bg-[#0FB9B1]/20"><i data-lucide="clock" class="w-6 h-6 text-[#0FB9B1]"></i></div>
-                                    <div>
-                                        <h4 class="font-poppins font-semibold">Business Hours</h4>
-                                        <p class="text-[#A0A0A0]">Mon - Sat: 9:00 AM - 6:00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
-
-        <footer class="border-t border-white/10 py-12 mt-auto">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid md:grid-cols-4 gap-8 mb-8">
-                    <div class="md:col-span-2">
-                        <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-3 mb-4 hover:opacity-90 transition-opacity">
-                            <img src="https://res.cloudinary.com/dx3kp9czc/image/upload/v1773335215/Untitled_design_1_uzqgyk.png" alt="MHN Solutions Logo" class="h-10 w-auto">
-                        </a>
-                        <p class="text-[#A0A0A0] text-sm mb-4 max-w-sm">Your trusted digital marketing partner in Pakistan and Oman. We help businesses grow through strategic marketing and creative excellence.</p>
-                        <p class="text-[#0FB9B1] text-sm font-medium">🌍 Serving Clients Globally</p>
-                    </div>
-                    <div>
-                        <h4 class="font-poppins font-semibold mb-4">Quick Links</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#" onclick="navigateTo('home'); return false;" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">Home</a></li>
-                            <li><a href="#" onclick="navigateTo('about'); return false;" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">About Us</a></li>
-                            <li><a href="#" onclick="navigateTo('services'); return false;" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">Services</a></li>
-                            <li><a href="#" onclick="navigateTo('pricing'); return false;" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">Pricing</a></li>
-                            <li><a href="#" onclick="navigateTo('contact'); return false;" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-poppins font-semibold mb-4">Contact</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center gap-2 text-[#A0A0A0] text-sm">
-                                <i data-lucide="message-circle" class="w-4 h-4 flex-shrink-0 text-[#25D366]"></i>
-                                <a href="https://wa.me/923356900672" target="_blank" rel="noopener noreferrer" class="hover:text-[#0FB9B1] transition-colors">+92 3356900672</a>
-                            </li>
-                            <li class="flex items-center gap-2 text-[#A0A0A0] text-sm">
-                                <i data-lucide="mail" class="w-4 h-4 flex-shrink-0 text-[#0FB9B1]"></i>
-                                <a href="mailto:contact.mhnsolutions@gmail.com" class="hover:text-[#0FB9B1] transition-colors">contact.mhnsolutions@gmail.com</a>
-                            </li>
-                        </ul>
-                        <div class="flex gap-3 mt-4">
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#0FB9B1]/20 flex items-center justify-center transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#0FB9B1]/20 flex items-center justify-center transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#0FB9B1]/20 flex items-center justify-center transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-divider mb-8"></div>
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-[#A0A0A0] text-sm">© 2026 MHN Solutions. All Rights Reserved.</p>
-                    <div class="flex gap-6">
-                        <a href="#" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">Privacy Policy</a>
-                        <a href="#" class="text-[#A0A0A0] hover:text-[#0FB9B1] transition-colors text-sm">Terms of Service</a>
+                            <button type="submit" class="w-full py-4 bg-accent rounded-full font-bold uppercase tracking-wide text-base glow-red glow-red-hover transition-all duration-300 hover:bg-accent-light flex items-center justify-center shadow-lg"> 
+                                <i data-lucide="send" class="w-5 h-5 mr-2"></i> Send Message 
+                            </button>
+                            <p id="form-message" class="hidden text-center py-3 rounded-xl"></p>
+                        </form>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </section>
+    </main>
+
+    <footer class="relative overflow-hidden bg-primary border-t border-white/10 -mt-px">
+       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <p class="font-bebas text-2xl text-white tracking-wider">HAMZA BEAST</p>
+                    <p class="text-white/60 text-sm leading-relaxed font-light">Elite Strength Academy</p>
+                </div>
+                </div>
+            <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-8"></div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <p class="text-white/30 text-xs uppercase tracking-widest">&copy; 2026 Hamza Beast Elite Academy. All Rights Reserved.</p>
+            </div>
+       </div>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
