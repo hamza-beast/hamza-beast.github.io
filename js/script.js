@@ -1,103 +1,115 @@
-// Global Variables
-const WHATSAPP_NUMBER = "+923356900672";
-let currentCurrency = 'USD'; // Default currency
-
-// 1. WhatsApp Redirection Logic
-function openWhatsApp(prefilledMessage) {
-    const encodedMessage = encodeURIComponent(prefilledMessage);
-    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER.replace(/[+\s-]/g, '')}?text=${encodedMessage}`;
-    window.open(whatsappURL, '_blank');
-}
-
-// 2. Contact Form to WhatsApp Submitter
-function submitFormToWhatsApp(event) {
-    event.preventDefault(); // Prevent page reload
-
-    const name = document.getElementById('contact-name').value;
-    const email = document.getElementById('contact-email').value;
-    const service = document.getElementById('contact-service').value;
-    const message = document.getElementById('contact-message').value;
-
-    // Construct the WhatsApp message
-    const waText = `*New Website Inquiry* 🚀\n\n*Name:* ${name}\n*Email:* ${email}\n*Interested In:* ${service}\n\n*Message:* ${message}`;
+document.addEventListener('DOMContentLoaded', () => {
     
-    // Redirect to WhatsApp
-    openWhatsApp(waText);
-}
+    // 1. Initialize Lucide Icons
+    lucide.createIcons();
 
-// 3. Currency Switcher Logic
-function toggleCurrency() {
-    const btn = document.getElementById('currency-btn');
-    const priceElements = document.querySelectorAll('.price-val');
-    const currencySymbols = document.querySelectorAll('.currency-symbol');
-
-    if (currentCurrency === 'USD') {
-        currentCurrency = 'PKR';
-        btn.innerText = 'PKR';
-        
-        // Update all prices and symbols
-        priceElements.forEach(el => el.innerText = el.getAttribute('data-pkr').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        currencySymbols.forEach(sym => sym.innerText = 'Rs ');
-    } else {
-        currentCurrency = 'USD';
-        btn.innerText = 'USD';
-        
-        // Revert all prices and symbols
-        priceElements.forEach(el => el.innerText = el.getAttribute('data-usd'));
-        currencySymbols.forEach(sym => sym.innerText = '$');
-    }
-}
-
-// 4. Navigation (SPA Format)
-function navigateTo(page) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    
-    const targetPage = document.getElementById(`page-${page}`);
-    if (targetPage) {
-        targetPage.classList.add('active');
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-            if (link.dataset.page === page) link.classList.add('active');
-        });
-        
-        // Close mobile menu if open
-        const mobileMenu = document.querySelector('.mobile-menu');
-        if (mobileMenu && mobileMenu.classList.contains('open')) {
-            toggleMobileMenu();
+    // 2. Service Pages Navigation
+    window.showService = function(pageId) {
+        document.querySelectorAll('.service-page').forEach(page => page.classList.remove('active'));
+        const selectedPage = document.getElementById(pageId);
+        if (selectedPage) {
+            selectedPage.classList.add('active');
+            window.scrollTo(0, 0);
+            lucide.createIcons();
         }
-        
-        // Re-trigger animations
-        setTimeout(initScrollAnimations, 100);
     }
-}
 
-// 5. Mobile Menu Toggle
-function toggleMobileMenu() {
-    document.querySelector('.mobile-menu').classList.toggle('open');
-    document.querySelector('.mobile-overlay').classList.toggle('open');
-}
+    window.goBack = function() {
+        document.querySelectorAll('.service-page').forEach(page => page.classList.remove('active'));
+        window.scrollTo(0, 0);
+    }
 
-// 6. Scroll Animations
-function initScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    // 3. Promotional Popup Logic
+    const popupOverlay = document.getElementById('promo-overlay');
+    const popupCloseBtn = document.getElementById('popup-close-btn');
+    const popupDeclineBtn = document.getElementById('popup-decline-btn');
+    const popupClaimBtn = document.getElementById('popup-claim-btn');
+
+    const popupClosed = localStorage.getItem('promoPopupClosed');
+
+    if (!popupClosed && popupOverlay) {
+        setTimeout(() => {
+            popupOverlay.classList.add('active');
+        }, 2000);
+    }
+
+    function closePopup() {
+        popupOverlay.classList.remove('active');
+        localStorage.setItem('promoPopupClosed', 'true');
+    }
+
+    if(popupCloseBtn) popupCloseBtn.addEventListener('click', closePopup);
+    if(popupDeclineBtn) popupDeclineBtn.addEventListener('click', closePopup);
+
+    if(popupClaimBtn) {
+        popupClaimBtn.addEventListener('click', () => {
+            window.open('https://wa.me/923125956779?text=Hi%20Coach%20Hamza,%20I%20want%20to%20claim%20the%2050%25%20discount%20offer.', '_blank');
+            closePopup();
+        });
+    }
+
+    // 4. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isMenuOpen = false;
+
+    if(mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.classList.toggle('hidden', !isMenuOpen);
+            mobileMenuBtn.innerHTML = isMenuOpen 
+                ? '<i data-lucide="x" class="w-6 h-6"></i>' 
+                : '<i data-lucide="menu" class="w-6 h-6"></i>';
+            lucide.createIcons();
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                lucide.createIcons();
+            });
+        });
+    }
+
+    // 5. Scroll Reveal Animation
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(element => {
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 150) {
+                element.classList.add('active');
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-        el.classList.remove('visible');
-        observer.observe(el);
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // 6. Navbar Background on Scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-lg');
+        } else {
+            navbar.classList.remove('shadow-lg');
+        }
     });
-}
 
-// Initialize everything when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons(); // Load Icons
-    initScrollAnimations(); // Start scrolling observer
+    // 7. Contact Form Handling (Configured for static sites)
+    // To make this work, sign up for formspree.io and replace the action URL in your HTML form
+    const contactForm = document.getElementById('contact-form');
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            // Uncomment e.preventDefault() if you just want to redirect to WhatsApp instead of Formspree
+            // e.preventDefault();
+            
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = 'Sending...';
+            formMessage.className = 'text-center py-3 rounded-xl bg-green-500/20 text-green-400 mt-4';
+            formMessage.classList.remove('hidden');
+        });
+    }
 });
