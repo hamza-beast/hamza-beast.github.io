@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://hamzabeast.com/</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dx3kp9czc/image/upload/v1773298778/IMG-20250601-WA0120_rlgok4.jpg</image:loc>
+      <image:title>Coach Hamza Beast - Professional Strength Coach</image:title>
+      <image:caption>Hamza Beast Elite Academy founder and national arm wrestling champion</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dx3kp9czc/image/upload/v1773337485/2_nutgqb.png</image:loc>
+      <image:title>Hamza Beast Elite Academy Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dx3kp9czc/image/upload/v1773301166/Untitled_design_5_gk4s2k.jpg</image:loc>
+      <image:title>Hamza Beast Client Transformation - Ahmad K</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dx3kp9czc/image/upload/v1773302267/Untitled_design_8_zw12am.jpg</image:loc>
+      <image:title>Hamza Beast Client Transformation - Bilal M</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dx3kp9czc/image/upload/v1773302910/Untitled_design_9_vd7jmi.jpg</image:loc>
+      <image:title>Hamza Beast Client Transformation - Usman R</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dx3kp9czc/image/upload/v1773303193/Untitled_design_12_gp6euv.jpg</image:loc>
+      <image:title>Hamza Beast Client Transformation - Aqsa A</image:title>
+    </image:image>
+  </url>
+</urlset>
