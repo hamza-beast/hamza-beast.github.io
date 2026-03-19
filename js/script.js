@@ -27,49 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    // 3. Promotional Popup & Dynamic Scarcity Logic
+    // 3. Promotional Popup Logic
     const popupOverlay = document.getElementById('promo-overlay');
     const popupCloseBtn = document.getElementById('popup-close-btn');
     const popupDeclineBtn = document.getElementById('popup-decline-btn');
     const popupClaimBtn = document.getElementById('popup-claim-btn');
 
-    // --- Dynamic Scarcity Logic ---
-    function updateScarcity() {
-        // Look for existing spots in local storage
-        let spots = localStorage.getItem('hamza_beast_spots');
-        
-        if (!spots || parseInt(spots) <= 2) {
-            // If new visitor, or spots ran out, randomly start them between 7 and 9
-            spots = Math.floor(Math.random() * 3) + 7; 
-        } else {
-            // If returning visitor, randomly subtract 1 or 2 spots to simulate sales
-            const decrease = Math.floor(Math.random() * 2) + 1;
-            spots = Math.max(2, parseInt(spots) - decrease);
-        }
-        
-        // Save the new number back to storage
-        localStorage.setItem('hamza_beast_spots', spots);
-        
-        // Update the HTML
-        const spotsElement = document.getElementById('spots-remaining');
-        const progressElement = document.getElementById('spots-progress');
-        
-        if (spotsElement && progressElement) {
-            spotsElement.textContent = spots;
-            // Assuming 10 is the max spots, calculate the width percentage
-            const widthPercent = (spots / 10) * 100;
-            progressElement.style.width = `${widthPercent}%`;
-        }
-    }
-
-    // --- Popup Display Logic ---
     const popupClosed = localStorage.getItem('promoPopupClosed');
 
     if (!popupClosed && popupOverlay) {
-        // Run the scarcity update right before showing
-        updateScarcity();
-        
-        // Show popup after 2 seconds
         setTimeout(() => {
             popupOverlay.classList.add('active');
         }, 2000);
@@ -77,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closePopup() {
         popupOverlay.classList.remove('active');
-        // Prevent popup from showing again for this user
         localStorage.setItem('promoPopupClosed', 'true');
     }
 
@@ -90,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closePopup();
         });
     }
-    
+
     // 4. Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -177,49 +142,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         });
     }
-
-    // 8. Dynamic Currency Switcher
-    // Fixed approximate exchange rates (Base: PKR)
-    const exchangeRates = {
-        PKR: { rate: 1, symbol: '₨' },
-        USD: { rate: 0.0036, symbol: '$' }, // Approx 1 USD = 278 PKR
-        GBP: { rate: 0.0028, symbol: '£' }, // Approx 1 GBP = 353 PKR
-        EUR: { rate: 0.0033, symbol: '€' }  // Approx 1 EUR = 300 PKR
-    };
-
-    function formatPrice(basePrice, currency) {
-        // Calculate and round the price
-        const converted = Math.round(basePrice * exchangeRates[currency].rate);
-        // Add commas and the correct symbol
-        return exchangeRates[currency].symbol + converted.toLocaleString();
-    }
-
-    function updateAllPrices(currency) {
-        // 1. Update all numbers on the page
-        document.querySelectorAll('.price-display').forEach(el => {
-            const basePrice = parseInt(el.getAttribute('data-base'), 10);
-            if (!isNaN(basePrice)) {
-                el.textContent = formatPrice(basePrice, currency);
-            }
-        });
-
-        // 2. Sync both desktop and mobile dropdowns
-        document.querySelectorAll('.currency-switcher').forEach(select => {
-            select.value = currency;
-        });
-
-        // 3. Save to browser storage so it remembers their choice on refresh
-        localStorage.setItem('hamza_preferred_currency', currency);
-    }
-
-    // Initialize currency on load
-    const savedCurrency = localStorage.getItem('hamza_preferred_currency') || 'PKR';
-    updateAllPrices(savedCurrency);
-
-    // Listen for dropdown changes
-    document.querySelectorAll('.currency-switcher').forEach(switcher => {
-        switcher.addEventListener('change', (e) => {
-            updateAllPrices(e.target.value);
-        });
-    });
 });
