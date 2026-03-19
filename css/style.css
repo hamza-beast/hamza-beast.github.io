@@ -1,33 +1,3 @@
-/* ✅ GLOBAL HORIZONTAL OVERFLOW FIX */
-
-/* 1. Lock the body and html to the viewport width and hide horizontal overflow */
-html, body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* 2. Ensure padding and borders are included in element widths */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* 3. Force long unbroken text (like emails) to wrap onto the next line */
-* {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-/* 4. Prevent media from breaking out of containers */
-img, video, svg {
-  max-width: 100%;
-  height: auto;
-}
-
-/* 5. Ensure sections do not exceed screen width */
-section, div, header, footer {
-  max-width: 100%;
-}
 /* Base Styles */
 html { scroll-behavior: smooth; }
 body { box-sizing: border-box; }
@@ -175,12 +145,3 @@ body { box-sizing: border-box; }
 
 .service-page { display: none; }
 .service-page.active { display: block; }
-
-/* Popup Visibility Utilities */
-#promo-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-#promo-overlay.active #promo-container {
-    transform: scale(1);
-}
