@@ -1,0 +1,11 @@
+# Hamza Beast Elite Academy - robots.txt
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /js/
+
+# Sitemap
+Sitemap: https://hamzabeast.com/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1
