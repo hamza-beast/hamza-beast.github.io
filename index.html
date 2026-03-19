@@ -33,67 +33,44 @@
 </head>
 <body class="h-full bg-primary font-inter text-white overflow-auto">
 
-    <div id="promo-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center opacity-0 invisible transition-all duration-300">
-        <div id="promo-container" class="relative bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border-2 border-accent/30 rounded-[2rem] p-6 sm:p-8 max-w-md w-[90%] shadow-[0_0_50px_rgba(255,60,0,0.15)] transform scale-95 transition-transform duration-300">
-            
-            <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-white/50 hover:bg-accent/20 hover:text-accent transition-colors border border-transparent hover:border-accent/30" id="popup-close-btn" aria-label="Close Popup">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-accent to-accent-light text-white px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(255,60,0,0.4)] flex items-center gap-2 whitespace-nowrap">
-                🔥 LIMITED TIME OFFER
-            </div>
-
-            <div class="text-center mt-4">
-                <div class="text-4xl mb-3 animate-bounce">🎯</div>
-                <h2 class="font-bebas text-4xl sm:text-5xl text-white leading-none tracking-wide mb-2">
-                    GET <span class="text-accent drop-shadow-[0_0_10px_rgba(255,60,0,0.5)]">50% OFF</span> TODAY
-                </h2>
-                <p class="text-accent uppercase text-xs font-bold tracking-wider mb-6">For The First 10 Serious Members Only</p>
-                
-                <div class="bg-accent/5 border border-accent/20 rounded-2xl p-4 flex items-center justify-center gap-5 mb-6">
-                    <div class="flex flex-col items-end">
-                        <span class="text-white/40 line-through text-lg font-bold">₨29,999</span>
-                        <span class="text-white/30 text-[10px] uppercase tracking-widest">/month</span>
+    <div id="promo-overlay" class="popup-overlay">
+        <div class="popup-container">
+            <div class="popup-badge">🔥 LIMITED TIME OFFER</div>
+            <button class="popup-close" id="popup-close-btn" aria-label="Close Popup">&times;</button>
+            <div class="popup-content">
+                <div class="popup-emoji animate-bounce">🎯</div>
+                <h2 class="popup-heading">GET <span class="discount">50% OFF</span> TODAY</h2>
+                <p class="popup-subheading">For The First 10 Serious Members Only</p>
+                <div class="popup-pricing-section">
+                    <div class="pricing-original">
+                        <span class="original-price">₨29,999</span> 
+                        <span class="strike-through">/month</span>
                     </div>
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-light flex items-center justify-center shadow-[0_0_15px_rgba(255,60,0,0.4)] shrink-0">
-                        <span class="text-white text-[11px] font-black uppercase tracking-wide">NOW</span>
-                    </div>
-                    <div class="flex flex-col items-start">
-                        <span class="text-accent font-bebas text-4xl leading-none">₨14,999</span>
-                        <span class="text-accent font-bold text-[11px] mt-1 tracking-wide">💰 Save ₨15,000</span>
+                    <div class="pricing-divider"><span class="divider-text">NOW</span></div>
+                    <div class="pricing-offer">
+                        <span class="offer-price">₨14,999</span>
+                        <p class="save-text">💰 Save ₨15,000 Instantly</p>
                     </div>
                 </div>
-
-                <div class="bg-accent/10 border-l-4 border-accent rounded-r-xl p-3.5 mb-6 text-left">
-                    <div class="flex items-center gap-2 text-accent font-bold text-sm mb-2.5 uppercase tracking-wide">
-                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                        <span>Only <span id="spots-remaining" class="bg-accent text-white px-2 py-0.5 rounded text-base mx-1 shadow-md">10</span> Spots Available</span>
+                <div class="urgency-container">
+                    <div class="scarcity-alert">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i> 
+                        <span>⚠ Only <span class="spots-remaining">10</span> Spots Available</span>
                     </div>
-                    <div class="w-full h-2 bg-black/60 rounded-full overflow-hidden mb-1.5">
-                        <div id="spots-progress" class="h-full bg-gradient-to-r from-accent to-accent-light w-[100%] rounded-full shadow-[0_0_10px_rgba(255,60,0,0.8)] transition-all duration-1000 ease-out"></div>
-                    </div>
-                    <p class="text-accent/80 text-[10px] font-bold uppercase tracking-wider text-right">Spots Filling Fast...</p>
+                    <div class="urgency-bar"><div class="urgency-fill"></div></div>
+                    <p class="urgency-text">Spots Filling Fast…</p>
                 </div>
-
-                <p class="text-white/70 text-sm mb-6 leading-relaxed px-2">
-                    Full month access to elite coaching, personalized workouts, custom meal plans, and 24/7 WhatsApp support.
-                </p>
-
-                <div class="flex items-center justify-center gap-2 text-green-400 bg-green-400/10 py-2 px-4 rounded-full text-xs font-bold mb-6 w-max mx-auto border border-green-400/20">
-                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-                    Trusted by 500+ transformations
+                <p class="popup-description">Full month access to elite coaching, personalized workouts, custom meal plans, and 24/7 WhatsApp support.</p>
+                <div class="social-proof">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> 
+                    <span>Trusted by 500+ transformations</span>
                 </div>
-
-                <div class="flex flex-col gap-4">
-                    <button id="popup-claim-btn" class="w-full py-4 bg-gradient-to-r from-accent to-accent-light rounded-full text-white font-black uppercase tracking-wider text-sm flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(255,60,0,0.4)] hover:shadow-[0_0_30px_rgba(255,60,0,0.6)] hover:scale-[1.02] transition-all duration-300">
-                        <i data-lucide="zap" class="w-4 h-4"></i>
-                        CLAIM MY 50% DISCOUNT NOW
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                    <button id="popup-decline-btn" class="text-white/40 text-xs hover:text-accent underline decoration-transparent hover:decoration-accent transition-all duration-300 font-medium">
-                        No thanks, I'll miss this opportunity
-                    </button>
+                <div class="popup-button-group">
+                    <button class="popup-btn-primary animate-pulse-glow" id="popup-claim-btn"> 
+                        <i data-lucide="zap" class="w-5 h-5"></i> CLAIM MY 50% DISCOUNT NOW 
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i> 
+                    </button> 
+                    <button class="popup-btn-secondary" id="popup-decline-btn">No thanks, I'll miss this opportunity</button>
                 </div>
             </div>
         </div>
@@ -116,7 +93,7 @@
                     <a href="#programs" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Programs</a> 
                     <a href="#achievements" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Achievements</a> 
                     <a href="#services-list" class="text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Services</a> 
-                    <div class="flex items-center ml-4 gap-4">     <select class="currency-switcher bg-transparent text-white/80 text-sm font-semibold uppercase tracking-wide cursor-pointer focus:outline-none border-b border-transparent hover:border-accent/50 transition-colors pb-1">         <option value="PKR" class="bg-primary text-white">PKR (₨)</option>         <option value="USD" class="bg-primary text-white">USD ($)</option>         <option value="GBP" class="bg-primary text-white">GBP (£)</option>         <option value="EUR" class="bg-primary text-white">EUR (€)</option>     </select>     <a href="#contact" class="px-6 py-2.5 bg-accent rounded-full font-bold text-sm uppercase tracking-wide glow-red glow-red-hover transition-all duration-300 hover:bg-accent-light">Join Now</a> </div>
+                    <a href="#contact" class="ml-4 px-6 py-2.5 bg-accent rounded-full font-bold text-sm uppercase tracking-wide glow-red glow-red-hover transition-all duration-300 hover:bg-accent-light">Join Now</a>
                 </nav>
                 <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors" aria-label="Toggle Menu"> 
                     <i data-lucide="menu" class="w-6 h-6"></i> 
@@ -130,7 +107,7 @@
                 <a href="#programs" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Programs</a> 
                 <a href="#achievements" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Achievements</a> 
                 <a href="#services-list" class="block py-2 text-sm font-semibold text-white/80 hover:text-accent transition-colors uppercase tracking-wide">Services</a> 
-                <div class="flex items-center justify-between mt-4 px-2">     <select class="currency-switcher bg-transparent text-white/80 text-sm font-semibold uppercase tracking-wide cursor-pointer focus:outline-none border-b border-white/20 pb-1 w-auto">         <option value="PKR" class="bg-primary text-white">PKR (₨)</option>         <option value="USD" class="bg-primary text-white">USD ($)</option>         <option value="GBP" class="bg-primary text-white">GBP (£)</option>         <option value="EUR" class="bg-primary text-white">EUR (€)</option>     </select> </div> <a href="#contact" class="block mt-4 px-6 py-3 bg-accent rounded-full font-bold text-sm uppercase tracking-wide text-center glow-red">Join Now</a>
+                <a href="#contact" class="block mt-4 px-6 py-3 bg-accent rounded-full font-bold text-sm uppercase tracking-wide text-center glow-red">Join Now</a>
             </div>
         </nav>
     </header>
@@ -371,7 +348,7 @@
                             <div class="mb-6">
                                 <p class="text-white/60 uppercase tracking-wide text-sm font-semibold">Daily</p>
                                 <div class="flex items-baseline mt-2">
-                                    <span class="font-bebas text-5xl text-white price-display" data-base="3000">₨3,000</span> <span class="text-white/40 ml-2">/day</span>
+                                    <span class="font-bebas text-5xl text-white">₨3,000</span> <span class="text-white/40 ml-2">/day</span>
                                 </div>
                             </div>
                             <ul class="space-y-3 mb-6 flex-grow">
@@ -387,7 +364,7 @@
                             <div class="mb-6">
                                 <p class="text-white/60 uppercase tracking-wide text-sm font-semibold">Weekly</p>
                                 <div class="flex items-baseline mt-2">
-                                    <span class="font-bebas text-5xl text-white price-display" data-base="12000">₨12,000</span> <span class="text-white/40 ml-2">/week</span>
+                                    <span class="font-bebas text-5xl text-white">₨12,000</span> <span class="text-white/40 ml-2">/week</span>
                                 </div>
                             </div>
                             <ul class="space-y-3 mb-6 flex-grow">
@@ -405,7 +382,7 @@
                             <div class="mb-6">
                                 <p class="text-accent uppercase tracking-wide text-sm font-semibold">Monthly</p>
                                 <div class="flex items-baseline mt-2">
-                                    <span class="font-bebas text-5xl text-white price-display" data-base="29999">₨29,999</span> <span class="text-white/40 ml-2">/month</span>
+                                    <span class="font-bebas text-5xl text-white">₨29,999</span> <span class="text-white/40 ml-2">/month</span>
                                 </div>
                             </div>
                             <ul class="space-y-3 mb-6 flex-grow">
@@ -423,9 +400,9 @@
                             <div class="mb-6">
                                 <p class="text-white/60 uppercase tracking-wide text-sm font-semibold">Yearly</p>
                                 <div class="flex items-baseline mt-2">
-                                    <span class="font-bebas text-5xl text-white price-display" data-base="299999">₨299,999</span> <span class="text-white/40 ml-2">/year</span>
+                                    <span class="font-bebas text-5xl text-white">₨299,999</span> <span class="text-white/40 ml-2">/year</span>
                                 </div>
-                                <p class="text-accent text-xs mt-1">Save <span class="price-display" data-base="60000">₨60,000</span>!</p>
+                                <p class="text-accent text-xs mt-1">Save ₨60,000!</p>
                             </div>
                             <ul class="space-y-3 mb-6 flex-grow">
                                 <li class="flex items-center text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-accent mr-2 flex-shrink-0"></i>Full year access</li>
@@ -440,7 +417,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="py-16 lg:py-20 relative bg-primary border-t border-white/10 overflow-hidden">
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 reveal">
