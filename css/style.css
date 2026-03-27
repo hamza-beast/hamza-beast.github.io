@@ -1,7 +1,23 @@
-/* Base Styles */
-html { scroll-behavior: smooth; }
-body { box-sizing: border-box; }
+/* Base Styles & Resets */
+html, body { 
+    max-width: 100%;       /* CRITICAL FIX: Eliminates 100vw bug causing right gap */
+    overflow-x: hidden;    /* CRITICAL FIX: Hides any absolute elements pushed out of bounds */
+    position: relative;
+    scroll-behavior: smooth; 
+}
 
+/* Ensure padding doesn't affect standard widths globally */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+    overflow-wrap: break-word; /* Prevents long text from breaking layout */
+}
+
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Typography Variables */
 .font-bebas { font-family: 'Bebas Neue', sans-serif; }
 .font-inter { font-family: 'Inter', sans-serif; }
 
@@ -34,94 +50,16 @@ body { box-sizing: border-box; }
     to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 60, 0, 0.5); }
-    50% { box-shadow: 0 0 35px rgba(255, 60, 0, 0.8); }
-}
-
-@keyframes popupSlideIn {
-    from { opacity: 0; transform: scale(0.8) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-@keyframes overlayFadeIn {
-    from { opacity: 0; backdrop-filter: blur(0px); }
-    to { opacity: 1; backdrop-filter: blur(4px); }
-}
-
-@keyframes fillProgress {
-    0%, 100% { width: 70%; }
-    50% { width: 85%; }
-}
-
 /* Utility Classes */
 .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
 .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
 .animate-slide-right { animation: slideInRight 0.8s ease-out forwards; }
-.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 
-/* Popup Styles */
-.popup-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    backdrop-filter: blur(4px);
-}
-
-.popup-overlay.active {
-    opacity: 1;
-    visibility: visible;
-    animation: overlayFadeIn 0.4s ease-out;
-}
-
-.popup-container {
-    background: linear-gradient(145deg, #1a1a1a 0%, #0f0f0f 100%);
-    border-radius: 25px;
-    padding: 1.75rem;
-    max-width: 420px;
-    width: 90%;
-    border: 2px solid rgba(255, 60, 0, 0.3);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 60, 0, 0.2);
-    position: relative;
-    animation: popupSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.popup-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 60, 0, 0.1);
-    border: 1px solid rgba(255, 60, 0, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff3c00;
-    cursor: pointer;
-    font-size: 24px;
-    transition: all 0.3s ease;
-}
-
-.popup-close:hover {
-    background: rgba(255, 60, 0, 0.2);
-    transform: rotate(90deg);
-}
-
-/* Scroll reveal */
+/* Dynamic Scroll Reveal */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -133,18 +71,21 @@ body { box-sizing: border-box; }
     transform: translateY(0);
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #0f0f0f; }
 ::-webkit-scrollbar-thumb { background: #ff3c00; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #ff5a2e; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
 
-/* Gradient backgrounds */
+/* Gradient Backgrounds */
 .bg-gradient-dark { background: linear-gradient(180deg, #0f0f0f 0%, #1c1c1c 50%, #0f0f0f 100%); }
 .bg-gradient-card { background: linear-gradient(145deg, #1c1c1c 0%, #151515 100%); }
 
+/* Service Pages toggle */
 .service-page { display: none; }
 .service-page.active { display: block; }
+
 /* Popup Visibility Utilities */
 #promo-overlay.active {
     opacity: 1;
